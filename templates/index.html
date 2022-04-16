@@ -7,6 +7,29 @@
         <meta charset="utf-8">
     </head>
     <body>
-        
+        <h1>
+            Homepage
+        </h1>
+
+        {% if username %}
+        Welcome back, {{username}}!
+        {% endif %}
+
+        <ul>
+            
+            <li>
+                <a href="/signup">Sign Up</a>
+            </li>
+            <li>
+                <a href="/login">Log In</a>
+            </li>
+
+            {% if username %}
+            <li>
+                <a href="/logout">Log Out</a>
+            </li>
+            {% endif %}
+
+        </ul>
     </body>
 </html>
