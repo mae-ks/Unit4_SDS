@@ -72,9 +72,8 @@ def login():
             db_password = login_user['password']
 
             password = request.form['password'].encode('utf-8')
-            print(db_password == password)
             # compare username in database to username submitted in form
-            if password == db_password: # bcrypt.checkpw(password, db_password) not working
+            if bcrypt.checkpw(password, db_password): # bcrypt.checkpw(password, db_password) not working
                 # store username in session
                 session['username'] = request.form['username']
                 return redirect("/" + request.form['username'])
