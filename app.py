@@ -46,7 +46,7 @@ def signup():
             # hash password
             salt = bcrypt.gensalt()
             hashed = bcrypt.hashpw(password, salt)
-            users.insert_one({'name':username, 'password':password})
+            users.insert_one({'name':username, 'password':hashed})
 
             # store username in session
             session['username'] = request.form['username']
