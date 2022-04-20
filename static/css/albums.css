@@ -52,7 +52,7 @@
     height: 500px; 
     position: fixed; 
     top: 100px; 
-    background-image: url("./pictures/billie.jpg");
+    background-image: url("./images/billie.jpg");
     background-size: cover; 
     background-position: center center;
   }
@@ -90,3 +90,16 @@
     align-items: center
   }
   
+  
+  
+  .HTE_CD {
+    position: relative;
+    width: 300px; 
+    height: 300px; 
+    background-image: url("./images/hte.jpg");
+    background-size: cover;
+  }
+  
+  .tracklist{
+    color: white
+  }
