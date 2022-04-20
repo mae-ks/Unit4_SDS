@@ -31,7 +31,7 @@ def index(username=None):
 @app.route ('/signup', methods=['GET','POST'])
 def signup():
     if request.method == 'POST':
-        # if user submit details
+        # if user submit details on page
         users = mongo.db.users
 
         # search for username in database
@@ -73,8 +73,9 @@ def login():
 
             password = request.form['password'].encode('utf-8')
             # compare username in database to username submitted in form
-            if bcrypt.checkpw(password, db_password): # bcrypt.checkpw(password, db_password) not working
+            if bcrypt.checkpw(password, db_password):
                 # store username in session
+                session.clear()
                 session['username'] = request.form['username']
                 return redirect("/" + request.form['username'])
             else:
