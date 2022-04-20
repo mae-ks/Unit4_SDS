@@ -2,15 +2,21 @@
 <html>
     <head>
         <title>
+            {% block title %}
             Sign Up
+            {% endblock %}
         </title>
         <meta charset="utf-8">
     </head>
     <body>
         <h1>
+            {% block header %}
             Sign Up
+            {% endblock %}
         </h1>
+        {% block form %}
         <form method="post" action="/signup">
+        {% endblock %}
             <label for="username">Username:</label>
             <input type="text" name="username" value="">
             <label for="password">Password:</label>
