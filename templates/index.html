@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        
         <title>
+            {% block title %}
             Homepage
+            {% endblock %}
         </title>
 
         <meta charset="utf-8">
@@ -27,7 +29,7 @@
 
                 <ul class="left hide-on-med-and-down">
                     {% if username %}
-                    <li><a href="">Profile</a></li>
+                    <li><a href={{ url_for('profile', username=username) }}>Profile</a></li>
                     <li>Welcome back, {{username}}!</li>
                     {% else %}
                     <li>Register/Log in for more features!</li>
@@ -47,6 +49,9 @@
 
             </div>
         </nav>
+
+        {% block body %}
+        {% endblock %}
 
     </body>
 </html>

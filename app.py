@@ -92,3 +92,18 @@ def logout():
     # clear username from session data
     session.clear()
     return redirect('/')
+
+@app.route('/<username>/profile', methods=['GET', 'POST'])
+def profile(username):
+    user = mongo.db.users.find_one({'name':username})
+    if request.method == 'POST':
+        return redirect(url_for('changepassword', username=username, password=request.form['newpassword']))
+    return render_template('profile.html', username=username)
+
+@app.route('/changepassword/<username>/<password>', methods=['GET', 'POST'])
+def changepassword(username, password):
+    password = password.encode('utf-8')
+    salt = bcrypt.gensalt()
+    hashed = bcrypt.hashpw(password, salt)
+    mongo.db.users.update_one({'name':username}, {'$set':{'password':hashed}})
+    return redirect("/" + username)

@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+{% block title %}
+{{username}}'s profile
+{% endblock %}
+
+{% block body %}
+<h3>{{username}}'s profile</h3>
+Username: {{username}}
+
+<form method="post" action="/{{username}}/profile">
+    Change password:
+    <div class="col s12 input-field inline">
+        <input id="newpassword" name="newpassword" type="password" class="validate">
+    </div>
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock %}
