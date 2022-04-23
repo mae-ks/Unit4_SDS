@@ -18,6 +18,8 @@ app.config['MONGO_DBNAME'] = 'Unit4'
 # URI of database
 app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 mongo = PyMongo(app)
+#Create collection for favorites
+mongo.db.create_collection('favorites_library')
 
 # -- Session data --
 app.secret_key = secrets.token_urlsafe(16)
@@ -92,3 +94,27 @@ def logout():
     # clear username from session data
     session.clear()
     return redirect('/')
+
+#Favorites Route
+@app.route('/index/<album>/<username>/album', methods=['GET', 'POST'])
+def favorites(album, username):
+    user = mongo.db.users_library
+    username = users.find_one({"name":username})
+    #ratings_lib = mongo.db['ratings_library']
+    if request.method == 'GET':
+        return render_template('album.html', album=album, username=username)
+    elif 'favorite' in request.form:
+        favorite = request.form['favorite']
+        if favorite:
+            collection = mongo.db['favorites']
+            album = request.form['album']
+            username = request.form['username']
+            favorites.insert_one({'username': username, 'album': album)
+
+        else:
+            return redirect(url_for('favorites', album=album, username=username))
+    
+    else:
+        return render_template('album.html', album=album, username=username)
+        #redirect to the index route upon form submission
+        return redirect('/index')
