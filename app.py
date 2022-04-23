@@ -19,7 +19,7 @@ app.config['MONGO_DBNAME'] = 'Unit4'
 app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 mongo = PyMongo(app)
 #Create collection for favorites
-mongo.db.create_collection('favorites_library')
+
 
 # -- Session data --
 app.secret_key = secrets.token_urlsafe(16)
@@ -99,7 +99,7 @@ def logout():
 @app.route('/index/<album>/<username>', methods=['GET', 'POST'])
 def favorites(album, username):
     user = mongo.db.users_library
-    username = users.find_one({"name":username})
+    username = user.find_one({"name":username})
     #ratings_lib = mongo.db['ratings_library']
     if request.method == 'GET':
         return render_template('index.html', album=album, username=username)
