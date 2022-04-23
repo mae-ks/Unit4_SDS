@@ -40,7 +40,11 @@
                     {% endif %}
                 </ul>
 
+                {% if username %}
+                <a href="/{{username}}" class="brand-logo black-text center" style="font-size: 40px;">Euphoria Records</a>
+                {% else %}
                 <a href="./" class="brand-logo black-text center" style="font-size: 40px;">Euphoria Records</a>
+                {% endif %}
 
                 <ul class="right hide-on-med-and-down">
                     {% if username %}
