@@ -6,11 +6,11 @@ import secrets
 from model import *
 import os
 
-# Run line below in terminal
+# For flask -->
 # export MONGO_URI="mongodb+srv://admin:15112001@cluster0.v0lkc.mongodb.net/Unit4?retryWrites=true&w=majority"
 # FLASK_DEBUG=1
-# https://medium.com/@gitaumoses4/deploying-a-flask-application-on-heroku-e509e5c76524
-# git add . git commit -m "heroku" git push heroku main
+# For heroku -->
+# git add ., git commit -m "heroku", git push heroku main, git push
 
 # -- Initialization --
 app = Flask(__name__)
@@ -27,10 +27,16 @@ app.secret_key = secrets.token_urlsafe(16)
 @app.route('/index')
 @app.route('/<username>')
 def index(username=None):
+    """
+    Homepage
+    """
     return render_template('index.html', username=username)
 
 @app.route ('/signup', methods=['GET','POST'])
 def signup():
+    """
+    User signup
+    """
     if request.method == 'POST':
         # if user submit details on page
         users = mongo.db.users
@@ -62,6 +68,9 @@ def signup():
 
 @app.route('/login', methods=['GET','POST'])
 def login():
+    """
+    User login
+    """
     if request.method == 'POST':
         users = mongo.db.users
 
@@ -114,3 +123,7 @@ def changepassword(username, password):
     hashed = bcrypt.hashpw(password, salt)
     mongo.db.users.update_one({'name':username}, {'$set':{'password':hashed}})
     return redirect("/" + username)
+
+@app.route('/album')
+def album_view():
+    return render_template('album.html')
