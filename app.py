@@ -96,6 +96,9 @@ def logout():
 
 @app.route('/<username>/profile', methods=['GET', 'POST'])
 def profile(username):
+    """
+    Retrieve user's profile where they can choose to change password.
+    """
     user = mongo.db.users.find_one({'name':username})
     if request.method == 'POST':
         return redirect(url_for('changepassword', username=username, password=request.form['newpassword']))
@@ -103,6 +106,9 @@ def profile(username):
 
 @app.route('/changepassword/<username>/<password>', methods=['GET', 'POST'])
 def changepassword(username, password):
+    """
+    Updating password in database.
+    """
     password = password.encode('utf-8')
     salt = bcrypt.gensalt()
     hashed = bcrypt.hashpw(password, salt)
