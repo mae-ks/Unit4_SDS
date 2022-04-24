@@ -8,6 +8,7 @@ import os
 
 # Run line below in terminal
 # export MONGO_URI="mongodb+srv://admin:15112001@cluster0.v0lkc.mongodb.net/Unit4?retryWrites=true&w=majority"
+# FLASK_DEBUG=1
 # https://medium.com/@gitaumoses4/deploying-a-flask-application-on-heroku-e509e5c76524
 # git add . git commit -m "heroku" git push heroku main
 
@@ -57,7 +58,7 @@ def signup():
 
     else:
         # if loading page
-        return render_template('signup.html')
+        return render_template('signup.html', session=session)
 
 @app.route('/login', methods=['GET','POST'])
 def login():
@@ -85,7 +86,7 @@ def login():
             return "User not found."
     
     else:
-        return render_template('login.html')
+        return render_template('login.html', session=session)
 
 @app.route('/logout')
 def logout():

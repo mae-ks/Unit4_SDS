@@ -7,6 +7,7 @@
             {% endblock %}
         </title>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/signup.css') }}">
     </head>
     <body>
         <h1>
@@ -14,15 +15,21 @@
             Sign Up
             {% endblock %}
         </h1>
-        {% block form %}
-        <form method="post" action="/signup">
-        {% endblock %}
-            <label for="username">Username:</label>
-            <input type="text" name="username" value="">
-            <label for="password">Password:</label>
-            <input type="password" name="password" value="">
-            <input type="submit" value="submit">
-        </form>
-        <p><a href="/">Cancel</a></p>
+        <div id="content">
+            {% block form %}
+            <form method="post" action="/signup">
+            {% endblock %}
+                <label for="username">Username:</label>
+                <input type="text" name="username" value="">
+                <label for="password">Password:</label>
+                <input type="password" name="password" value="">
+                <input type="submit" value="submit">
+            </form>
+            {% if not session %}
+            <p><a href="/">Cancel</a></p>
+            {% else %}
+            <p><a href="/{{session['username']}}">Cancel</a></p>
+            {% endif %}
+        </div>
     </body>
 </html>
