@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
         <title>
             {% block title %}
             Homepage
@@ -18,181 +17,313 @@
             body {
                 background-size: cover;
                 background-image: url("../static/images/hexagons.jpg");
+                background-repeat: no-repeat;
+            }
+
+            .white {
+                display: fixed;
+            }
+
+            h3 {
+                text-align: center;
+            }
+
+            .container {
+                color:black;
+                padding: 60px;
+                padding-bottom: 5px;
+            }
+
+            figure {
+                float: right;
+                width: 100%;
+                text-align: center;
+                font-style: italic;
+                font-size: normal;
+                text-indent: 0;
+                margin: 0px;
+            }
+
+            .circular--landscape { 
+                display: inline-block; 
+                position: relative; 
+                width: 200px; 
+                height: 200px; 
+                overflow: hidden; 
+                border-radius: 50%; 
+            }
+
+            .circular--landscape img { 
+                width: auto; 
+                height: 100%; 
+                margin-left: -50px; 
+            }
+
+            .circle {
+                height: 200px;
+                width: 200px;
+                background-color: #bbb;
+                border-radius: 50%;
+            }
+
+            P.desc {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .text-center {
+                background-color: rgb(230, 229, 229);
+                background-image: none;
+                box-shadow: 1px 12px 10px grey
+            }
+
+            .mb-5 {
+                padding: 20px;
+                padding-bottom: 1px;
+                margin: 1px;
+            }
+
+            figure2 {
+                float: right;
+                width: 100%;
+                text-align: center;
+                font-style: normal;
+                font-size: 18px;
+                text-indent: 0;
+                margin: 20px;
             }
 
             img {
-                border-radius: 50%;
+                object-fit: contain;
+                width:350px;
+                height:200px;
+            }
+
+            .square--portrait {
+                display:inline-block;
+                position: relative;
+                width: 200px; 
+                height: 200px;
+                overflow: hidden;
+            } 
+
+            .square--portrait img {
+                width: 100%;
+                height: auto;
+            }            
+
+            .square--landscape {
+                display:inline-block;
+                position: relative;
+                width: 200px;
+                height: 200px;
+                overflow: hidden;
+                margin-left: 0px
+            } 
+
+            .square--landscape img {
+                max-width: auto; 
+                height: 100%;
+            }
+
+            .square {
+                position: relative;
+                height: 200px;
+                width: 200px;
+                background-color: #bbb;
+                overflow: hidden; 
+                object-fit: cover;
+            }
+
+            .page-footer {
+                background-color: #ffffff;
+                color: #000000
+            }
+
+            .footer-copyright p{
+                color: black;
+                text-align: center;
+                width: 100%;
             }
         </style>
-
     </head>
     <body>
         
         <nav class="white">
             <div class="nav-wrapper">
-
-                <ul class="left hide-on-med-and-down">
+                <!-- <ul class="left hide-on-med-and-down">
                     {% if username %}
                     <li><a href={{ url_for('profile', username=username) }}>Profile</a></li>
                     <li>Welcome back, {{username}}!</li>
                     {% else %}
                     <li>Register/Log in for more features!</li>
                     {% endif %}
-                </ul>
+                </ul> -->
 
-                {% if username %}
+                <!-- {% if username %}
                 <a href="/{{username}}" class="brand-logo black-text center" style="font-size: 40px;">Euphoria Records</a>
-                {% else %}
+                {% else %} -->
                 <a href="./" class="brand-logo black-text center" style="font-size: 40px;">Euphoria Records</a>
-                {% endif %}
+                <!-- {% endif %} -->
 
-                <ul class="right hide-on-med-and-down">
+                <!-- <ul class="right hide-on-med-and-down">
                     {% if username %}
                     <li><a href="/logout">Log Out</a></li>
                     {% else %}
                     <li><a href="/login">Log In</a></li>
                     {% endif %}
                     <li><a href="/signup">Sign Up</a></li>
-                </ul>
+                </ul> -->
 
             </div>
         </nav>
-
+         <!-- Eurphoria Pres/Vip section -->
         <div class = "container">
             <div class="row">
                 <div class="col s6">
-                    <p class="grey-text">
+                    <p class="desc">
                        "Euphoria Records is a completely online-based record label, managing some of the largest upcoming acts, from Lil Baby, to Yeat, to Billie Eillish. Euphoria Records looks to innovate the music industry with cutting-edge technology enabling fans to buy their artists' music directly from the website." 
                     </p>
                 </div>
-
                 <div class="col s3">
-                  <img src="jayz.jpg" alt="President" style="width:100%">
+                    <figure>
+                        <div class="circular--landscape">
+                            <img src="../static/images/jayz.jpg" alt="President" class="circle">
+                        </div>
+                        <figcaption>President</figcaption>
+                    </figure>
                 </div>
-                <!-- <div class="col s3"></div> -->
                 <div class="col s3">
-                  <img src="kanyewest.jpg" alt="Vice President" style="width:100%">
+                    <figure>
+                        <div class="circular--landscape">
+                            <img src="../static/images/kanyewest.jpg" alt="Vice President" class="circle">
+                        </div>
+                        <figcaption>Vice President</figcaption>
+                    </figure>
                 </div>
             </div>
-
-            <!-- description text row -->
-            <div class="row">
-                <div class="col s6"></div>
-        
-                <div class="col s3" id="maintxt">
-                    President
-                </div>
-
-                <div class="col s3" id="maintxt">
-                    Vice President
-                </div>
-            </div>
-        
         </div>
 
-        <section id = "artists" class="text-center about">
-            <br>
-            <h1 class="mb-5 font-weight-bold">Artists</h1>
-            <br>
-            <div class="row">
-                <div class="col s3">
-                    <div class="artistheader">Billie Eilish</div>
-                    <br> 
-                </div>
-                <div class="col s3">
-                    <div class="artistheader">Lil Baby</div>
-                    <br> 
-                </div>
-                <div class="col s3">
-                    <div class="artistheader">Yeat</div>
-                    <br> 
-                </div>
-                <div class="col s3">
-                    <div class="artistheader">Tame Impala</div>
-                    <br> 
-                </div>
-            </div>
+        <!-- Artist section -->
 
-            <div class="row">
-                <div class="col s3">
-                    <a href="https://www.qries.com/">
-                        <img src="billie.jpg" alt="Billie" style="width:100%">
-                    </a>
-                </div>
-                <div class="col s3">
-                    <img src="lilbaby.jpg" alt="Lil Baby" style="width:100%">
-                </div>
-                <div class="col s3">
-                    <img src="yeat.jpg" alt="Yeat" style="width:100%">
-                </div>
-                <div class="col s3">
-                    <img src="tameimpala.jpg" alt="Tame Impala" style="width:100%">
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col s3">
-                    <div class="artistheader">NoCap</div>
-                    <br> 
-                </div>
-                <div class="col s3">
-                    <div class="artistheader">Cleo Sol</div>
-                    <br> 
-                </div>
-                <div class="col s3">
-                    <div class="artistheader">Tony Shhnow</div>
-                    <br> 
-                </div>
-                <div class="col s3">
-                    <div class="artistheader">Babyface Ray</div>
-                    <br> 
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col s3">
-                    <img src="nocap.jpg" alt="NoCap" style="width:100%">
-                </div>
-                <div class="col s3">
-                    <img src="cleo.jpg" alt="Cleo Sol" style="width:100%">
-                </div>
-                <div class="col s3">
-                    <img src="tony.jpg" alt="Tony Shhnow" style="width:100%">
-                </div>
-                <div class="col s3">
-                    <img src="babyface.jpg" alt="Babyface Ray" style="width:100%">
-                </div>
-            </div>
-            
-        </section>
+        <div id = "artists" class="text-center">
+            <h3 class="mb-5 font-weight-bold">Artists</h3>
+                <div class="row">
+                    <div class="col s3">
+                        <figure2>
+                            <figcaption>Billie Eilish</figcaption>
+                                <div class="square--portrait">
+                                    <a href="https://www.qries.com/">
+                                        <img src="../static/images/billie-eilish.jpg" alt="Billie">
+                                    </a>
+                                </div>
+                        </figure2>
+                    </div>
 
-        <footer class="page-footer">
-            <div class="container">
+                    <div class="col s3">
+                        <figure2>
+                            <figcaption>Lil Baby</figcaption>
+                                <div class="square--portrait">
+                                    <a href="https://www.qries.com/">
+                                        <img src="../static/images/lilbaby.jpg" alt="Lil Baby">
+                                    </a>
+                                </div>
+                        </figure2>
+                    </div>
+
+                    <div class="col s3">
+                        <figure2>
+                            <figcaption>Yeat</figcaption>
+                                <a href="https://www.qries.com/">
+                                    <img src="../static/images/yeat.jpg" alt="Yeat">
+                                </a>
+                        </figure2>
+                    </div>
+
+                    <div class="col s3">
+                        <figure2>
+                            <figcaption>Tame Impala</figcaption>
+                                <div class="square--landscape">
+                                    <a href="https://www.qries.com/">
+                                        <img src="../static/images/tame.jpg" alt="Tame Impala" class="square">
+                                    </a>
+                                </div>
+                        </figure2>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col s3">
+                        <figure2>
+                            <figcaption>NoCap</figcaption>
+                                <a href="https://www.qries.com/">
+                                    <img src="../static/images/nocap.jpg" alt="NoCap" class="square">
+                                </a>
+                        </figure2>
+                    </div>
+
+                    <div class="col s3">
+                        <figure2>
+                            <figcaption>Cleo Sol</figcaption>
+                                <div class="square--landscape">
+                                    <a href="https://www.qries.com/">
+                                        <img src="../static/images/cleo.jpg" alt="Cleo Sol" class="square">
+                                    </a>
+                                </div>
+                        </figure2>
+                    </div>
+
+                    <div class="col s3">
+                        <figure2>
+                            <figcaption>Tony Shhnow</figcaption>
+                        
+                                <div class="square--portrait">
+                                    <a href="https://www.qries.com/">
+                                        <img src="../static/images/tony.jpg" alt="Tony Shhnow">
+                                    </a>
+                                </div>
+                            
+                        </figure2>
+                    </div>
+
+                    <div class="col s3">
+                        <figure2>
+                            <figcaption>Babyface Ray</figcaption>
+                                <div class="square--portrait">
+                                    <a href="https://www.qries.com/">
+                                        <img src="../static/images/ray.jpg" alt="Babyface Ray">
+                                    </a>
+                                </div>
+                        </figure2>
+                    </div>
+                </div>
+        </div>
+
+        <div class="page-footer">
+            <div class="">
                 <div class="row">
                     <div class="col l6 s12">
-                        <h5 class="black-text">Euphoria Records!</h5>
-                        <p class="black text">123 Euphoria Ave</p>
-                        <p class="black text">Washington, DC 20060</p>
+                        <h5 class="">Euphoria Records!</h5>
+                        <p class="">123 Euphoria Ave</p>
+                        <p class="">Washington, DC 20060</p>
                     </div>
                     <div class="col l4 offset-l2 s12">
                         <h5 class "black-text">Links</h5>
                         <ul>
                             <li>
-                                <a class="grey text text-lighten-3" href="https://www.instagram.com/euphoriarecords">Instagram</a>
+                                <a class="" href="https://www.instagram.com/euphoriarecords">Instagram</a>
                             </li>
                             <li>
-                                <a class="grey text text-lighten-3" href="https://www.twitter.com/euphoriarecords">Twitter</a>
+                                <a class="" href="https://www.twitter.com/euphoriarecords">Twitter</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="footer-copyright">
-                <div class="container"> 
-                    © 2021 Team Euphoria
-                </div>
+            <div class="footer-copyright" >
+                    <p>© 2021 Team Euphoria</p>
             </div>
-        </footer>
+        </div>
 
         <!-- {% block body %}
         {% endblock %} -->
