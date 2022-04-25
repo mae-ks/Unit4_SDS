@@ -93,37 +93,6 @@ def logout():
     session.clear()
     return redirect('/')
 
-#Add to Favorites Route
-@app.route('/favorites', methods=['GET', 'POST'])
-def favorite():
-    if request.method == 'POST':
-        if request.form.get('FAVORITE') == 'FAVORITE':
-            collection = mongo.db.favorites
-            if session:
-                username = session['username']
-            else:
-                username = None
-            album = "Test"
-            collection.insert_one({'username': username, 'album': album})
-
-    elif request.method == 'GET':
-        return render_template('favorites.html')
-
-    return render_template('favorites.html')
-
-#Navigate to Favorites Page
-@app.route('/index/favorites_page', methods=['GET', 'POST'])
-def favorites_page():
-    return render_template("favorites.html")
-
-#View Favorites
-@app.route('/favorites_page')
-def favorites_view():
-    username = session['username']
-    fav = mongo.db.favorites
-    favorites = fav.find({"username":username})
-    return render_template('favorites.html', favorites=favorites)
-  
 @app.route('/<username>/profile', methods=['GET', 'POST'])
 def profile(username):
     username = mongo.db.users.find_one({'name':username})
@@ -139,7 +108,6 @@ def changepassword(username, password):
     mongo.db.users.update_one({'name':username}, {'$set':{'password':hashed}})
     return redirect("/" + username)
 
-<<<<<<< HEAD
 """@app.route('/<stage_name>')
 def album_view():
     songs = mongo.db.albums
@@ -174,17 +142,7 @@ def add_cover(albumID):
         collection.update_one(album, newcovers)
 
         return redirect('/index/<albumID>/'+albumID)
-<<<<<<< HEAD
-=======
 
 @app.route('/index/artists_page', methods=['GET', 'POST'])
 def artists_page():
-=======
-@app.route('/index/artists_page', methods=['GET', 'POST'])
-def artists_page():
-    # artist = mongo.db.artists.find_one({'stage_name':stage_name})
-    # if request.method == 'GET':
-    #     return redirect(url_for())
->>>>>>> 4bad5326eb41adfdfdae21b289ae219be100ddea
     return render_template("artist.html")
->>>>>>> brandon
