@@ -1,0 +1,72 @@
+ <!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="https://twemoji.maxcdn.com/2/svg/1f4fd.svg">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        
+        <style>
+            nav, nav ul a {color: black;}
+            body {
+                background-size: cover;
+                background-image: url("../static/images/hexagons.jpg");
+            }
+        </style>
+
+    </head>
+    <body>
+        
+        <nav class="white">
+            <div class="nav-wrapper">
+
+                <ul class="left hide-on-med-and-down">
+                    {% if session %}
+                    <li><a href="">Profile</a></li>
+                    <li>Welcome back, {{ session['username'] }}!</li>
+                    {% else %}
+                    <li>Register/Log in for more features!</li>
+                    {% endif %}
+                </ul>
+
+                <a href="./" class="brand-logo black-text center" style="font-size: 40px;">Euphoria Records</a>
+
+                <ul class="right hide-on-med-and-down">
+                    {% if session %}
+                    <li><a href="/logout">Log Out</a></li>
+                    <li><a href="/favorites_view">View Favorites</a></li>
+                    {% else %}
+                    <li><a href="/login">Log In</a></li>
+                    {% endif %}
+                    <li><a href="/signup">Sign Up</a></li>
+                </ul>
+
+            </div>
+        </nav>
+    <body>
+        <h1>
+            {% block header %}
+            Favorites
+            {% endblock %}
+        </h1>
+        
+        {% if session %}
+        <form method="post" action="/favorites">
+            <input type="submit" name="FAVORITE" value="FAVORITE">
+        </form>
+        {% endif %}
+
+
+        <div class="favs">
+            <ul>
+              
+               
+                {% for fav in favorites %}
+                <li><a href='/favorites_page'>fav</a>{{fav.album}} </li>
+                {% endfor %}
+          
+             
+            </ul>
+          </div>
+          <p> HELLO WORLD</p>
+    </body>
+</html>
