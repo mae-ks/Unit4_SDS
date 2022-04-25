@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <title>
+            {% block title %}
+            Artist
+            {% endblock %}
+        </title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="https://twemoji.maxcdn.com/2/svg/1f4fd.svg">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        
+        <style>
+            nav, nav ul a {
+                color: black;
+            }
+
+            body {
+                background-size: cover;
+                background-image: url("../static/images/hexagons.jpg");
+            }
+
+            .nav-wrapper {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                /* line-height: 1; */
+                overflow: hidden;
+            }
+
+            .nav-wrapper li {
+                display: inline-block;
+            }
+
+            h3 {text-align: center;}
+
+            .page-footer {
+                background-color: #ffffff;
+                color: #000000
+            }
+
+            .container {
+                color:black
+            }
+
+            .desc {
+                margin-left: auto;
+                margin-right: auto;
+                /* text-align: center; */
+                display: inline-block;
+            }
+
+            figure {
+                float: right;
+                width: 100%;
+                text-align: center;
+                font-style: normal;
+                font-size: normal;
+                text-indent: 0;
+                margin: 0px;
+            }
+
+            figure2 {
+                float: right;
+                width: 100%;
+                text-align: center;
+                font-style: normal;
+                font-size: 18px;
+                text-indent: 0;
+                margin: 20px;
+            }
+
+            img {
+                object-fit: contain;
+                width:350px;
+                height:200px;
+            }
+
+
+            .circular--landscape {
+                display: inline-block;
+                position: relative;
+                width: 200px;
+                height: 200px; 
+                border-radius: 50%;
+            } 
+                
+            .circular--landscape img { width: auto; height: 100%; margin-left: 0px; }
+
+            .circle {
+                height: 200px;
+                width: 200px;
+                background-color: #bbb;
+            }
+
+            .square--landscape {display:inline-block;position: relative; width: 200px; height: 200px; overflow: hidden; margin-left: 0px} 
+            .square--landscape img { max-width: auto; height: 100%;}
+
+            .square--portrait {display:inline-block; position: relative; width: 200px; height: 200px; overflow: hidden; } 
+            .square--portrait img { width: 100%; height: auto;}
+
+
+            .square {
+                position: relative;
+                height: 200px;
+                width: 200px;
+                background-color: #bbb;
+                overflow: hidden; 
+      
+                object-fit: cover;
+            }
+
+            .page-footer {
+                background-color: #ffffff;
+                color: #000000
+            }
+
+            .footer-copyright p{
+                color: black;
+                text-align: center;
+                width: 100%;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        
+        <nav class="white">
+            <div class="nav-wrapper">
+                <ul class="left hide-on-med-and-down">
+                    {% if username %}
+                    <li><a href={{ url_for('profile', username=username) }}>Profile</a></li>
+                    <li>Welcome back, {{username}}!</li>
+                    {% else %}
+                    <li>Register/Log in for more features!</li>
+                    {% endif %}
+                </ul>
+
+                {% if username %}
+                <a href="/{{username}}" class="brand-logo black-text center" style="font-size: 40px;">Euphoria Records</a>
+                {% else %}
+                <a href="./" class="brand-logo black-text center" style="font-size: 40px;">Euphoria Records</a>
+                {% endif %}
+
+                <ul class="right hide-on-med-and-down">
+                    {% if username %}
+                    <li><a href="/logout">Log Out</a></li>
+                    {% else %}
+                    <li><a href="/login">Log In</a></li>
+                    {% endif %}
+                    <li><a href="/signup">Sign Up</a></li>
+                </ul>
+
+            </div>
+        </nav>
+
+        <div class = "container">
+            <div class="row">
+                <div class="col s6 pull-l1">
+                    <p class="desc">
+                       "Raised and homeschooled in Los Angeles by actor/musician parents, Eilish (born Billie Eilish Pirate Baird O'Connell in 2001) started writing songs when she was around 11, exploring a strain of melancholy, minimal, and slightly surrealistic pop influenced as much by Lana Del Rey as the radical honesty of rappers like Tyler, the Creator and Earl Sweatshirt. Writing and recording with her brother—and producer—FINNEAS at their parents’ house, Eilish released dont smile at me in 2017, followed by an ever-evolving series of singles—a prime example of the fact that, in the streaming era, artists are now free to move directly from their bedrooms into the spotlight." 
+                    </p>
+                </div>
+                
+                <div class="col s6">
+                    <figure>
+                        <figcaption><h4>Billie Eilish</h4></figcaption>
+                        <div class="circular--landscape">
+                            <img src="../static/images/billie-eilish.jpg" alt="Billie" class="circle responsive-img">
+                        </div>
+                    </figure>
+                </div>
+            </div>
+        </div>
+
+        <div id = "artists" class="text-center">
+            <h3 class="mb-5 font-weight-bold">Discography</h3>
+                <div class="row">
+                    <div class="col s3">
+                        <figure2>
+                            <figcaption>Happier Than Ever</figcaption>
+                                <div class="square--portrait">
+                                    <a href="https://www.qries.com/">
+                                        <img src="../static/images/happierthanever.png" alt="Billie">
+                                    </a>
+                                </div>
+                        </figure2>
+                    </div>
+                    <div class="col s3">
+                        <figure2>
+                            <figcaption>When We All Fall Asleep, Where Do We Go?</figcaption>
+                                <div class="square--portrait">
+                                    <a href="https://www.qries.com/">
+                                        <img src="../static/images/billiedebut.jpg" alt="Billie">
+                                    </a>
+                                </div>
+                        </figure2>
+                    </div>
+                    <div class="col s3">
+                        <figure2>
+                            <figcaption>dont smile at me</figcaption>
+                                <div class="square--portrait">
+                                    <a href="https://www.qries.com/">
+                                        <img src="../static/images/dontsmile.jpg" alt="Billie">
+                                    </a>
+                                </div>
+                        </figure2>
+                    </div>
+                </div>
+                
+        </div>
+
+        <footer class="page-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="">Euphoria Records!</h5>
+                        <p class="">123 Euphoria Ave</p>
+                        <p class="">Washington, DC 20060</p>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class "black-text">Links</h5>
+                        <ul>
+                            <li>
+                                <a class="" href="https://www.instagram.com/euphoriarecords">Instagram</a>
+                            </li>
+                            <li>
+                                <a class="" href="https://www.twitter.com/euphoriarecords">Twitter</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>© 2021 Team Euphoria</p>
+            </div>
+        </footer>
+
+        <!-- {% block body %}
+        {% endblock %} -->
+
+    </body>
+</html>
