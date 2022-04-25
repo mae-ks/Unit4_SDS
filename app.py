@@ -160,3 +160,7 @@ def add_cover(albumID):
         collection.update_one(album, newcovers)
 
         return redirect('/index/<albumID>/'+albumID)
+
+@app.route('/index/artists_page', methods=['GET', 'POST'])
+def artists_page():
+    return render_template("artist.html")
