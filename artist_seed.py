@@ -44,5 +44,5 @@ artists = [
     "origin":"Detroit, Michigan",
     "albums":["FACE"]
     }
-
+]
     
