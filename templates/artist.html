@@ -116,7 +116,7 @@
         <nav class="white">
             <div class="nav-wrapper">
 
-                <!-- <ul class="left hide-on-med-and-down">
+                <ul class="left hide-on-med-and-down">
                     {% if username %}
                     <li><a href={{ url_for('profile', username=username) }}>Profile</a></li>
                     <li>Welcome back, {{username}}!</li>
@@ -127,9 +127,9 @@
 
                 {% if username %}
                 <a href="/{{username}}" class="brand-logo black-text center" style="font-size: 40px;">Euphoria Records</a>
-                {% else %} -->
+                {% else %}
                 <a href="./" class="brand-logo black-text center" style="font-size: 40px;">Euphoria Records</a>
-                <!-- {% endif %}
+                {% endif %}
 
                 <ul class="right hide-on-med-and-down">
                     {% if username %}
@@ -138,7 +138,7 @@
                     <li><a href="/login">Log In</a></li>
                     {% endif %}
                     <li><a href="/signup">Sign Up</a></li>
-                </ul> -->
+                </ul>
 
             </div>
         </nav>
@@ -175,7 +175,28 @@
                                 </div>
                         </figure2>
                     </div>
+                    <div class="col s3">
+                        <figure2>
+                            <figcaption>When We All Fall Asleep, Where Do We Go?</figcaption>
+                                <div class="square--portrait">
+                                    <a href="https://www.qries.com/">
+                                        <img src="../static/images/billiedebut.jpg" alt="Billie">
+                                    </a>
+                                </div>
+                        </figure2>
+                    </div>
+                    <div class="col s3">
+                        <figure2>
+                            <figcaption>dont smile at me</figcaption>
+                                <div class="square--portrait">
+                                    <a href="https://www.qries.com/">
+                                        <img src="../static/images/dontsmile.jpg" alt="Billie">
+                                    </a>
+                                </div>
+                        </figure2>
+                    </div>
                 </div>
+                
         </div>
 
         <footer class="page-footer">

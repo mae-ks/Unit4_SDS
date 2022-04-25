@@ -151,32 +151,34 @@
         
         <nav class="white">
             <div class="nav-wrapper">
-                <!-- <ul class="left hide-on-med-and-down">
+
+                <ul class="left hide-on-med-and-down">
                     {% if username %}
                     <li><a href={{ url_for('profile', username=username) }}>Profile</a></li>
-                    <li>Welcome back, {{username}}!</li>
+                    <li>Welcome back, {{session['username']}}!</li>
                     {% else %}
                     <li>Register/Log in for more features!</li>
                     {% endif %}
-                </ul> -->
+                </ul>
 
-                <!-- {% if username %}
+                {% if username %}
                 <a href="/{{username}}" class="brand-logo black-text center" style="font-size: 40px;">Euphoria Records</a>
-                {% else %} -->
+                {% else %}
                 <a href="./" class="brand-logo black-text center" style="font-size: 40px;">Euphoria Records</a>
-                <!-- {% endif %} -->
+                {% endif %}
 
-                <!-- <ul class="right hide-on-med-and-down">
+                <ul class="right hide-on-med-and-down">
                     {% if username %}
                     <li><a href="/logout">Log Out</a></li>
                     {% else %}
                     <li><a href="/login">Log In</a></li>
                     {% endif %}
                     <li><a href="/signup">Sign Up</a></li>
-                </ul> -->
+                </ul>
 
             </div>
         </nav>
+
          <!-- Eurphoria Pres/Vip section -->
         <div class = "container">
             <div class="row">
@@ -213,7 +215,7 @@
                         <figure2>
                             <figcaption>Billie Eilish</figcaption>
                                 <div class="square--portrait">
-                                    <a href="https://www.qries.com/">
+                                    <a href="/artist.html/">
                                         <img src="../static/images/billie-eilish.jpg" alt="Billie">
                                     </a>
                                 </div>
