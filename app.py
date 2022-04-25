@@ -3,7 +3,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import bcrypt
 import secrets
-from model import *
+from model import stage_names
 import os
 
 # For flask -->
@@ -19,6 +19,8 @@ app.config['MONGO_DBNAME'] = 'Unit4'
 # URI of database
 app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 mongo = PyMongo(app)
+
+albums = mongo.db['albums']
 
 # -- Session data --
 app.secret_key = secrets.token_urlsafe(16)
@@ -124,6 +126,15 @@ def changepassword(username, password):
     mongo.db.users.update_one({'name':username}, {'$set':{'password':hashed}})
     return redirect("/" + username)
 
-@app.route('/album')
+"""@app.route('/<stage_name>')
 def album_view():
-    return render_template('album.html')
+    songs = mongo.db.albums
+    albums = songs.find({"stage_name": stage_name})
+    return render_template('album.html', albums = albums, stage_names = stage_names)"""
+
+
+@app.route('/index/ <albumID>')
+def album_view(albumID):
+    collection = mongo.db.albums
+    album = collection.find_one({"_id":ObjectId(albumID)})
+    return render_template('album.html', album = album)    
