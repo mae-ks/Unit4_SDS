@@ -137,4 +137,26 @@ def album_view():
 def album_view(albumID):
     collection = mongo.db.albums
     album = collection.find_one({"_id":ObjectId(albumID)})
-    return render_template('album.html', album = album)    
+    return render_template('album.html', album = album)
+
+
+@app.route('/index/<albumID>/add_image', methods=['GET','POST'])
+def add_cover(albumID): 
+    if request.method == "GET":
+        collection = mongo.db.albums 
+
+        album = collection.find_one({"_id":ObjectID(albumID)})
+
+        return render_template('add_cover.html', album=album)
+    else: 
+
+        #assigning form data to variable 
+        url = request.form['url']
+        collection = mongo.db.albums
+
+        album = {"_id":ObjectId(albumID)}
+        newcovers = {"$set": {"image": url}}
+
+        collection.update_one(album, newcovers)
+
+        return redirect('/index/<albumID>/'+albumID)
