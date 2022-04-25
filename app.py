@@ -95,17 +95,16 @@ def logout():
     return redirect('/')
 
 #Favorites Route
-@app.route('/index/<album>/<username>/album', methods=['GET', 'POST'])
+@app.route('/index/<album>/<username>', methods=['GET', 'POST'])
 def favorites(album, username):
-    if request.method == 'GET':
-        return render_template('index.html', album=album, username=username)
-    elif 'favorite' in request.form:
-        favorite = request.form['favorite']
-        if favorite:
-            collection = mongo.db['favorites']
-            album = request.form['album']
-            username = request.form['username']
-            collection.insert_one({'username': username, 'album': album})
+    if request.method == 'POST':
+        if 'favorite' in request.form:
+            favorite = request.form['favorite']
+            if favorite:
+                collection = mongo.db['favorites']
+                album = request.form['album']
+                username = request.form['username']
+                collection.insert_one({'username': username, 'album': album})
 
         else:
             return redirect(url_for('favorites', album=album, username=username))
