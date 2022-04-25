@@ -23,9 +23,9 @@
             <div class="nav-wrapper">
 
                 <ul class="left hide-on-med-and-down">
-                    {% if username %}
-                    <li><a href={{ url_for('profile', username=username) }}>Profile</a></li>
-                    <li>Welcome back, {{session['username']}}!</li>
+                    {% if session %}
+                    <li><a href="">Profile</a></li>
+                    <li>Welcome back, {{ session['username'] }}!</li>
                     {% else %}
                     <li>Register/Log in for more features!</li>
                     {% endif %}
@@ -38,13 +38,14 @@
                 {% endif %}
 
                 <ul class="right hide-on-med-and-down">
-                    {% if username %}
+                    {% if session %}
                     <li><a href="/logout">Log Out</a></li>
-                    <li><a href="/favorites_view">View Favorites</a></li>
+                    <li><a href="/favorites_page">View Favorites</a></li>
                     {% else %}
                     <li><a href="/login">Log In</a></li>
-                    {% endif %}
                     <li><a href="/signup">Sign Up</a></li>
+                    {% endif %}
+                    
                 </ul>
 
             </div>
@@ -89,7 +90,7 @@
                             <figure2>
                                 <figcaption>Billie Eilish</figcaption>
                                     <div class="square--portrait">
-                                        <a href={{ url_for('artists_page')}}>
+                                        <a href={{ url_for('artists_page', artist = 'Billie Eilish')}}>
                                             <img src="../static/images/billie-eilish.jpg" alt="Billie">
                                         </a>
                                     </div>
@@ -100,7 +101,7 @@
                             <figure2>
                                 <figcaption>Lil Baby</figcaption>
                                     <div class="square--portrait">
-                                        <a href="artist.html">
+                                        <a href={{ url_for('artists_page2', artist = 'Lil Baby')}}>
                                             <img src="../static/images/lilbaby.jpg" alt="Lil Baby">
                                         </a>
                                     </div>

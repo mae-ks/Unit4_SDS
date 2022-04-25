@@ -1,0 +1,13 @@
+nav, nav ul a {color: black;}
+            body {
+                background-size: cover;
+                background-image: url("../static/images/hexagons.jpg");
+            }
+
+h1 {
+    text-align: center;
+}
+
+.favs {
+    font-family: "Monaco"
+}

@@ -4,14 +4,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" href="https://twemoji.maxcdn.com/2/svg/1f4fd.svg">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        
-        <style>
-            nav, nav ul a {color: black;}
-            body {
-                background-size: cover;
-                background-image: url("../static/images/hexagons.jpg");
-            }
-        </style>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/favorites.css') }}">
+     
 
     </head>
     <body>
@@ -33,11 +27,12 @@
                 <ul class="right hide-on-med-and-down">
                     {% if session %}
                     <li><a href="/logout">Log Out</a></li>
-                    <li><a href="/favorites_view">View Favorites</a></li>
+                    <li><a href="/favorites_page">View Favorites</a></li>
                     {% else %}
                     <li><a href="/login">Log In</a></li>
-                    {% endif %}
                     <li><a href="/signup">Sign Up</a></li>
+                    {% endif %}
+                    
                 </ul>
 
             </div>
@@ -45,24 +40,23 @@
     <body>
         <h1>
             {% block header %}
-            Favorites
+            Favorite Artists
             {% endblock %}
         </h1>
-        
-        
-
 
         <div class="favs">
             <ul>
               
-               
                 {% for fav in favorites %}
-                <li><a href='/favorites_page'>fav</a>{{fav.album}} </li>
+                <li>{{fav.artist}} </li>
                 {% endfor %}
-          
              
             </ul>
-          </div>
-          <p> HELLO WORLD</p>
+        </div>
+
+        <a href={{ url_for('index')}}>
+            <img src="http://cdn.onlinewebfonts.com/svg/img_238945.png" width='50' height='50' >
+        </a>
+          
     </body>
 </html>

@@ -137,15 +137,27 @@ def add_cover(albumID):
 
         return redirect('/index/<albumID>/'+albumID)
 
-@app.route('/index/artists_page', methods=['GET', 'POST'])
-def artists_page():
-    return render_template("artist.html")
+@app.route('/index/<artist>/artists_page', methods=['GET', 'POST'])
+def artists_page(artist):
+    """
+    Parameters:
+    - artist is artist as a string,
+
+    This route will render_tamplate to artist.html.
+    """
+    return render_template("artist.html", artist=artist)
 
 #Add to Favorites Route
 @app.route('/artist', methods=['GET', 'POST'])
 def favorite():
+    """
+    Parameters:
+    None
+
+    This function will allow a user to favorite an artist and add that favorite to the favorites collection.
+    """
     if request.method == 'POST':
-        if request.form.get('FAVORITE') == 'FAVORITE':
+        if request.form.get('FAVORITE') == 'CLICK TO FAVORITE ARTIST':
             collection = mongo.db.favorites
             if session:
                 username = session['username']
@@ -155,20 +167,44 @@ def favorite():
             collection.insert_one({'username': username, 'artist': artist})
 
     elif request.method == 'GET':
-        return render_template('artist.html')
+        return render_template('index.html')
 
-    return render_template('artist.html')
+    return render_template('index.html')
 
 #Navigate to Favorites Page
 @app.route('/index/favorites_page', methods=['GET', 'POST'])
+ 
 def favorites_page():
+    """
+    Parameters:
+    None
+
+    This function will render_template to favorites.html
+    """
     return render_template("favorites.html")
 
 #View Favorites
 @app.route('/favorites_page')
+
 def favorites_view():
+    """
+    Parameters:
+    None
+
+    This function will display a query of favorited artists for a user.
+    """
     username = session['username']
     fav = mongo.db.favorites
     favorites = fav.find({"username":username})
     return render_template('favorites.html', favorites=favorites)
+
+@app.route('/index/<artist>/artists_page2', methods=['GET', 'POST'])
+def artists_page2(artist):
+    """
+    Parameters:
+    artist
+
+    This function will render_template to artist2.html.
+    """
+    return render_template("artist2.html", artist=artist)
   

@@ -107,3 +107,23 @@ img {
     text-align: center;
     width: 100%;
 }
+
+
+input[type=submit] {
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    border: 1px solid #eee;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px #eee;
+    text-shadow: none;
+    margin-top: 1px;
+    margin-right: 2px;
+    }
+input[type=submit]:hover {
+    background: #bb0d0d;
+    color: #fff;
+    border: 1px solid #eee;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px #eee;
+    text-shadow: none;
+}
