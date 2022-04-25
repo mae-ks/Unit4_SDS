@@ -276,7 +276,7 @@
                             <figure2>
                                 <figcaption>Billie Eilish</figcaption>
                                     <div class="square--portrait">
-                                        <a href={{ url_for('artists_page')}}>
+                                        <a href="artist.html">
                                             <img src="../static/images/billie-eilish.jpg" alt="Billie">
                                         </a>
                                     </div>
@@ -391,5 +391,10 @@
             </div>
         {% endblock %}
 
+        {% if session %}
+        <a href={{ url_for('favorites_page')}}>
+            <img src = "https://cdn.dribbble.com/users/1369921/screenshots/3647290/media/9ffd1132dce685a50ab33af3d03ba091.gif" width=60 height= 60>
+         </a>  
+         {% endif %}
     </body>
 </html>
