@@ -1,0 +1,149 @@
+/* CSS for navbar */
+nav, nav ul a {color: black;}
+body {
+    background-size: cover;
+    background-image: url("../static/images/hexagons.jpg");
+    background-repeat: no-repeat;
+}
+
+.nav-wrapper {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /* line-height: 1; */
+    overflow: hidden;
+}
+
+.nav-wrapper li {
+    display: inline-block;
+}
+
+h3 {
+    text-align: center;
+}
+
+.container {
+    color:black;
+    padding: 60px;
+    padding-bottom: 5px;
+}
+
+figure {
+    float: right;
+    width: 100%;
+    text-align: center;
+    font-style: italic;
+    font-size: normal;
+    text-indent: 0;
+    margin: 0px;
+}
+
+.circular--landscape { 
+    display: inline-block; 
+    position: relative; 
+    width: 200px; 
+    height: 200px; 
+    overflow: hidden; 
+    border-radius: 50%; 
+}
+
+.circular--landscape img { 
+    width: auto; 
+    height: 100%; 
+    margin-left: -50px; 
+}
+
+.circle {
+    height: 200px;
+    width: 200px;
+    background-color: #bbb;
+    border-radius: 50%;
+}
+
+P.desc {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text-center {
+    background-color: rgb(230, 229, 229);
+    background-image: none;
+    box-shadow: 1px 12px 10px grey
+}
+
+.mb-5 {
+    padding: 20px;
+    padding-bottom: 1px;
+    margin: 1px;
+}
+
+figure2 {
+    float: right;
+    width: 100%;
+    text-align: center;
+    font-style: normal;
+    font-size: 18px;
+    text-indent: 0;
+    margin: 20px;
+}
+
+img {
+    object-fit: contain;
+    width:350px;
+    height:200px;
+}
+
+.square--portrait {
+    display:inline-block;
+    position: relative;
+    width: 200px; 
+    height: 200px;
+    overflow: hidden;
+} 
+
+.square--portrait img {
+    width: 100%;
+    height: auto;
+}
+
+.square--portrait:hover {
+    transform: scale(1.232);
+}
+
+.square--landscape {
+    display:inline-block;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    margin-left: 0px
+} 
+
+.square--landscape img {
+    max-width: auto; 
+    height: 100%;
+}
+
+.square--landscape:hover {
+    transform: scale(1.232);
+}
+
+.square {
+    position: relative;
+    height: 200px;
+    width: 200px;
+    background-color: #bbb;
+    overflow: hidden; 
+    object-fit: cover;
+}
+
+.page-footer {
+    background-color: #ffffff;
+    color: #000000
+}
+
+.footer-copyright p{
+    color: black;
+    text-align: center;
+    width: 100%;
+}

@@ -12,117 +12,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" href="https://twemoji.maxcdn.com/2/svg/1f4fd.svg">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/artist.css') }}">
         
         <style>
-            nav, nav ul a {
-                color: black;
-            }
-
-            body {
-                background-size: cover;
-                background-image: url("../static/images/hexagons.jpg");
-            }
-
-            .nav-wrapper {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                /* line-height: 1; */
-                overflow: hidden;
-            }
-
-            .nav-wrapper li {
-                display: inline-block;
-            }
-
-            h3 {text-align: center;}
-
-            .page-footer {
-                background-color: #ffffff;
-                color: #000000
-            }
-
-            .container {
-                color:black
-            }
-
-            .desc {
-                margin-left: auto;
-                margin-right: auto;
-                /* text-align: center; */
-                display: inline-block;
-            }
-
-            figure {
-                float: right;
-                width: 100%;
-                text-align: center;
-                font-style: normal;
-                font-size: normal;
-                text-indent: 0;
-                margin: 0px;
-            }
-
-            figure2 {
-                float: right;
-                width: 100%;
-                text-align: center;
-                font-style: normal;
-                font-size: 18px;
-                text-indent: 0;
-                margin: 20px;
-            }
-
-            img {
-                object-fit: contain;
-                width:350px;
-                height:200px;
-            }
-
-
-            .circular--landscape {
-                display: inline-block;
-                position: relative;
-                width: 200px;
-                height: 200px; 
-                border-radius: 50%;
-            } 
-                
-            .circular--landscape img { width: auto; height: 100%; margin-left: 0px; }
-
-            .circle {
-                height: 200px;
-                width: 200px;
-                background-color: #bbb;
-            }
-
-            .square--landscape {display:inline-block;position: relative; width: 200px; height: 200px; overflow: hidden; margin-left: 0px} 
-            .square--landscape img { max-width: auto; height: 100%;}
-
-            .square--portrait {display:inline-block; position: relative; width: 200px; height: 200px; overflow: hidden; } 
-            .square--portrait img { width: 100%; height: auto;}
-
-
-            .square {
-                position: relative;
-                height: 200px;
-                width: 200px;
-                background-color: #bbb;
-                overflow: hidden; 
-      
-                object-fit: cover;
-            }
-
-            .page-footer {
-                background-color: #ffffff;
-                color: #000000
-            }
-
-            .footer-copyright p{
-                color: black;
-                text-align: center;
-                width: 100%;
-            }
+            
 
         </style>
 
@@ -131,24 +24,22 @@
         
         <nav class="white">
             <div class="nav-wrapper">
+
                 <ul class="left hide-on-med-and-down">
-                    {% if username %}
-                    <li><a href={{ url_for('profile', username=username) }}>Profile</a></li>
-                    <li>Welcome back, {{username}}!</li>
+                    {% if session %}
+                    <li><a href="">Profile</a></li>
+                    <li>Welcome back, {{ session['username'] }}!</li>
                     {% else %}
                     <li>Register/Log in for more features!</li>
                     {% endif %}
                 </ul>
 
-                {% if username %}
-                <a href="/{{username}}" class="brand-logo black-text center" style="font-size: 40px;">Euphoria Records</a>
-                {% else %}
                 <a href="./" class="brand-logo black-text center" style="font-size: 40px;">Euphoria Records</a>
-                {% endif %}
 
                 <ul class="right hide-on-med-and-down">
-                    {% if username %}
+                    {% if session %}
                     <li><a href="/logout">Log Out</a></li>
+                    <li><a href="/favorites_view">View Favorites</a></li>
                     {% else %}
                     <li><a href="/login">Log In</a></li>
                     {% endif %}
@@ -175,6 +66,17 @@
                     </figure>
                 </div>
             </div>
+        </div>
+
+        <div>
+         
+        <form method="post" action="/artist">
+            <input type="hidden" name="artist" value="Billie Eilish">
+            <input type="submit" name="FAVORITE" value="FAVORITE">
+            <!--<img src = "https://cdn.dribbble.com/users/1369921/screenshots/3647290/media/9ffd1132dce685a50ab33af3d03ba091.gif" width='20' height= '20'> -->
+        </form>
+        
+         
         </div>
 
         <div id = "artists" class="text-center">

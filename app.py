@@ -108,13 +108,6 @@ def changepassword(username, password):
     mongo.db.users.update_one({'name':username}, {'$set':{'password':hashed}})
     return redirect("/" + username)
 
-<<<<<<< HEAD
-"""@app.route('/<stage_name>')
-def album_view():
-    songs = mongo.db.albums
-    albums = songs.find({"stage_name": stage_name})
-    return render_template('album.html', albums = albums, stage_names = stage_names)"""
-
 
 @app.route('/index/ <albumID>')
 def album_view(albumID):
@@ -147,15 +140,9 @@ def add_cover(albumID):
 @app.route('/index/artists_page', methods=['GET', 'POST'])
 def artists_page():
     return render_template("artist.html")
-=======
-@app.route('/index/artists_page', methods=['GET', 'POST'])
-def artists_page():
-    # artist = mongo.db.artists.find_one({'stage_name':stage_name})
-    # if request.method == 'GET':
-    #     return redirect(url_for())
-    return render_template("artist.html")
+
 #Add to Favorites Route
-@app.route('/favorites', methods=['GET', 'POST'])
+@app.route('/artist', methods=['GET', 'POST'])
 def favorite():
     if request.method == 'POST':
         if request.form.get('FAVORITE') == 'FAVORITE':
@@ -164,13 +151,13 @@ def favorite():
                 username = session['username']
             else:
                 username = None
-            album = "Test"
-            collection.insert_one({'username': username, 'album': album})
+            artist = request.form['artist']
+            collection.insert_one({'username': username, 'artist': artist})
 
     elif request.method == 'GET':
-        return render_template('favorites.html')
+        return render_template('artist.html')
 
-    return render_template('favorites.html')
+    return render_template('artist.html')
 
 #Navigate to Favorites Page
 @app.route('/index/favorites_page', methods=['GET', 'POST'])
@@ -185,4 +172,3 @@ def favorites_view():
     favorites = fav.find({"username":username})
     return render_template('favorites.html', favorites=favorites)
   
->>>>>>> ef050aff72958ca364d2187bbadc861e1dfa5b7a
