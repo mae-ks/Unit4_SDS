@@ -94,20 +94,34 @@ def logout():
     session.clear()
     return redirect('/')
 
-#Favorites Route
-@app.route('/index/<album>/<username>', methods=['GET', 'POST'])
-def favorites(album, username):
+#Add to Favorites Route
+@app.route('/favorites', methods=['GET', 'POST'])
+def favorite():
     if request.method == 'POST':
-        if 'favorite' in request.form:
-            favorite = request.form['favorite']
-            if favorite:
-                collection = mongo.db['favorites']
-                album = request.form['album']
-                username = request.form['username']
-                collection.insert_one({'username': username, 'album': album})
+        if request.form.get('FAVORITE') == 'FAVORITE':
+            collection = mongo.db.favorites
+            if session:
+                username = session['username']
+            else:
+                username = None
+            album = "Test"
+            collection.insert_one({'username': username, 'album': album})
 
-        else:
-            return redirect(url_for('favorites', album=album, username=username))
-    
-    else:
-        return redirect('/index')
+    elif request.method == 'GET':
+        return render_template('favorites.html')
+
+    return render_template('favorites.html')
+
+#Navigate to Favorites Page
+@app.route('/index/favorites_page', methods=['GET', 'POST'])
+def favorites_page():
+    return render_template("favorites.html")
+
+#View Favorites
+@app.route('/favorites_page')
+def favorites_view():
+    username = session['username']
+    fav = mongo.db.favorites
+    favorites = fav.find({"username":username})
+    return render_template('favorites.html', favorites=favorites)
+  
