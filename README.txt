@@ -22,6 +22,9 @@ Working Functionality:
 * Display favorite artists for logged in user
     * Query created to display all liked artists for logged in user
     (Lorelyne)
+  
+* Display Album template for user, logged in or not 
+   * Option to GET/ADD photo for album covers
 
 Hardcoded:
 
