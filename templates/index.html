@@ -24,7 +24,7 @@
 
                 <ul class="left hide-on-med-and-down">
                     {% if session %}
-                    <li><a href={{ url_for('profile', username=session.name) }}>Profile</a></li>
+                    <li><a href={{ url_for('profile', username=session['username']) }}>Profile</a></li>
                     <li>Welcome back, {{ session['username'] }}!</li>
                     {% else %}
                     <li>Register/Log in for more features!</li>
