@@ -1,11 +1,11 @@
 {% extends "index.html" %}
 {% block title %}
-{{username}}'s profile
+{{username.name}}'s profile
 {% endblock %}
 
 {% block body %}
-<h3>{{username}}'s profile</h3>
-Username: {{username}}
+<h3>{{username.name}}'s profile</h3>
+Username: {{username.name}}
 
 <form method="post" action="/{{username}}/profile">
     Change password:
