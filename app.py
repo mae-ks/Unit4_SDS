@@ -3,13 +3,14 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import bcrypt
 import secrets
-from model import *
+from model import stage_names
 import os
 
-# Run line below in terminal
+# For flask -->
 # export MONGO_URI="mongodb+srv://admin:15112001@cluster0.v0lkc.mongodb.net/Unit4?retryWrites=true&w=majority"
-# https://medium.com/@gitaumoses4/deploying-a-flask-application-on-heroku-e509e5c76524
-# git add . git commit -m "heroku" git push heroku main
+# FLASK_DEBUG=1
+# For heroku -->
+# git add ., git commit -m "heroku", git push heroku main, git push
 
 # -- Initialization --
 app = Flask(__name__)
@@ -19,6 +20,7 @@ app.config['MONGO_DBNAME'] = 'Unit4'
 app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 mongo = PyMongo(app)
 
+albums = mongo.db['albums']
 
 # -- Session data --
 app.secret_key = secrets.token_urlsafe(16)
@@ -27,10 +29,16 @@ app.secret_key = secrets.token_urlsafe(16)
 @app.route('/index')
 @app.route('/<username>')
 def index(username=None):
+    """
+    Homepage
+    """
     return render_template('index.html', username=username)
 
 @app.route ('/signup', methods=['GET','POST'])
 def signup():
+    """
+    User signup
+    """
     if request.method == 'POST':
         # if user submit details on page
         users = mongo.db.users
@@ -58,10 +66,13 @@ def signup():
 
     else:
         # if loading page
-        return render_template('signup.html')
+        return render_template('signup.html', session=session)
 
 @app.route('/login', methods=['GET','POST'])
 def login():
+    """
+    User login
+    """
     if request.method == 'POST':
         users = mongo.db.users
 
@@ -86,7 +97,7 @@ def login():
             return "User not found."
     
     else:
-        return render_template('login.html')
+        return render_template('login.html', session=session)
 
 @app.route('/logout')
 def logout():
@@ -125,3 +136,58 @@ def favorites_view():
     favorites = fav.find({"username":username})
     return render_template('favorites.html', favorites=favorites)
   
+@app.route('/<username>/profile', methods=['GET', 'POST'])
+def profile(username):
+    """
+    Retrieve user's profile where they can choose to change password.
+    """
+    user = mongo.db.users.find_one({'name':username})
+    if request.method == 'POST':
+        return redirect(url_for('changepassword', username=username, password=request.form['newpassword']))
+    return render_template('profile.html', username=username)
+
+@app.route('/changepassword/<username>/<password>', methods=['GET', 'POST'])
+def changepassword(username, password):
+    """
+    Updating password in database.
+    """
+    password = password.encode('utf-8')
+    salt = bcrypt.gensalt()
+    hashed = bcrypt.hashpw(password, salt)
+    mongo.db.users.update_one({'name':username}, {'$set':{'password':hashed}})
+    return redirect("/" + username)
+
+"""@app.route('/<stage_name>')
+def album_view():
+    songs = mongo.db.albums
+    albums = songs.find({"stage_name": stage_name})
+    return render_template('album.html', albums = albums, stage_names = stage_names)"""
+
+
+@app.route('/index/ <albumID>')
+def album_view(albumID):
+    collection = mongo.db.albums
+    album = collection.find_one({"_id":ObjectId(albumID)})
+    return render_template('album.html', album = album)
+
+
+@app.route('/index/<albumID>/add_image', methods=['GET','POST'])
+def add_cover(albumID): 
+    if request.method == "GET":
+        collection = mongo.db.albums 
+
+        album = collection.find_one({"_id":ObjectID(albumID)})
+
+        return render_template('add_cover.html', album=album)
+    else: 
+
+        #assigning form data to variable 
+        url = request.form['url']
+        collection = mongo.db.albums
+
+        album = {"_id":ObjectId(albumID)}
+        newcovers = {"$set": {"image": url}}
+
+        collection.update_one(album, newcovers)
+
+        return redirect('/index/<albumID>/'+albumID)

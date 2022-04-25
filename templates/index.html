@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        
         <title>
+            {% block title %}
             Homepage
+            {% endblock %}
         </title>
 
         <meta charset="utf-8">
@@ -12,29 +14,38 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         
         <style>
+            /* CSS for navbar */
             nav, nav ul a {color: black;}
             body {
                 background-size: cover;
                 background-image: url("../static/images/hexagons.jpg");
             }
+
+            img {
+                border-radius: 50%;
+            }
         </style>
 
     </head>
     <body>
-        
+        <!-- Navbar -->
         <nav class="white">
             <div class="nav-wrapper">
 
                 <ul class="left hide-on-med-and-down">
                     {% if username %}
-                    <li><a href="">Profile</a></li>
+                    <li><a href={{ url_for('profile', username=username) }}>Profile</a></li>
                     <li>Welcome back, {{username}}!</li>
                     {% else %}
                     <li>Register/Log in for more features!</li>
                     {% endif %}
                 </ul>
 
+                {% if username %}
+                <a href="/{{username}}" class="brand-logo black-text center" style="font-size: 40px;">Euphoria Records</a>
+                {% else %}
                 <a href="./" class="brand-logo black-text center" style="font-size: 40px;">Euphoria Records</a>
+                {% endif %}
 
                 <ul class="right hide-on-med-and-down">
                     {% if username %}
@@ -53,5 +64,145 @@
             <img src = "https://cdn.dribbble.com/users/1369921/screenshots/3647290/media/9ffd1132dce685a50ab33af3d03ba091.gif" width=60 height= 60>
          </a>  
          {% endif %}
+        
+        <!-- Body content in here -->
+        {% block body %}
+        <div class = "container">
+            <div class="row">
+                <div class="col s6">
+                    <p class="grey-text">
+                       "Euphoria Records is a completely online-based record label, managing some of the largest upcoming acts, from Lil Baby, to Yeat, to Billie Eillish. Euphoria Records looks to innovate the music industry with cutting-edge technology enabling fans to buy their artists' music directly from the website." 
+                    </p>
+                </div>
+
+                <div class="col s3">
+                  <img src="jayz.jpg" alt="President" style="width:100%">
+                </div>
+                <!-- <div class="col s3"></div> -->
+                <div class="col s3">
+                  <img src="kanyewest.jpg" alt="Vice President" style="width:100%">
+                </div>
+            </div>
+
+            <!-- description text row -->
+            <div class="row">
+                <div class="col s6"></div>
+        
+                <div class="col s3" id="maintxt">
+                    President
+                </div>
+
+                <div class="col s3" id="maintxt">
+                    Vice President
+                </div>
+            </div>
+        
+        </div>
+
+        <section id = "artists" class="text-center about">
+            <br>
+            <h1 class="mb-5 font-weight-bold">Artists</h1>
+            <br>
+            <div class="row">
+                <div class="col s3">
+                    <div class="artistheader">Billie Eilish</div>
+                    <br> 
+                </div>
+                <div class="col s3">
+                    <div class="artistheader">Lil Baby</div>
+                    <br> 
+                </div>
+                <div class="col s3">
+                    <div class="artistheader">Yeat</div>
+                    <br> 
+                </div>
+                <div class="col s3">
+                    <div class="artistheader">Tame Impala</div>
+                    <br> 
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s3">
+                    <a href="/album">
+                        <img src="billie.jpg" alt="Billie" style="width:100%">
+                    </a>
+                </div>
+                <div class="col s3">
+                    <img src="lilbaby.jpg" alt="Lil Baby" style="width:100%">
+                </div>
+                <div class="col s3">
+                    <img src="yeat.jpg" alt="Yeat" style="width:100%">
+                </div>
+                <div class="col s3">
+                    <img src="tameimpala.jpg" alt="Tame Impala" style="width:100%">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col s3">
+                    <div class="artistheader">NoCap</div>
+                    <br> 
+                </div>
+                <div class="col s3">
+                    <div class="artistheader">Cleo Sol</div>
+                    <br> 
+                </div>
+                <div class="col s3">
+                    <div class="artistheader">Tony Shhnow</div>
+                    <br> 
+                </div>
+                <div class="col s3">
+                    <div class="artistheader">Babyface Ray</div>
+                    <br> 
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col s3">
+                    <img src="nocap.jpg" alt="NoCap" style="width:100%">
+                </div>
+                <div class="col s3">
+                    <img src="cleo.jpg" alt="Cleo Sol" style="width:100%">
+                </div>
+                <div class="col s3">
+                    <img src="tony.jpg" alt="Tony Shhnow" style="width:100%">
+                </div>
+                <div class="col s3">
+                    <img src="babyface.jpg" alt="Babyface Ray" style="width:100%">
+                </div>
+            </div>
+            
+        </section>
+
+        <footer class="page-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="black-text">Euphoria Records!</h5>
+                        <p class="black text">123 Euphoria Ave</p>
+                        <p class="black text">Washington, DC 20060</p>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class "black-text">Links</h5>
+                        <ul>
+                            <li>
+                                <a class="grey text text-lighten-3" href="https://www.instagram.com/euphoriarecords">Instagram</a>
+                            </li>
+                            <li>
+                                <a class="grey text text-lighten-3" href="https://www.twitter.com/euphoriarecords">Twitter</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container"> 
+                    © 2021 Team Euphoria
+                </div>
+            </div>
+        </footer>
+        {% endblock %}
+
     </body>
 </html>
