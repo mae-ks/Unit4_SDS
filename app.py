@@ -58,7 +58,7 @@ def signup():
 
     else:
         # if loading page
-        return render_template('signup.html')
+        return render_template('signup.html', session=session)
 
 @app.route('/login', methods=['GET','POST'])
 def login():
@@ -86,7 +86,7 @@ def login():
             return "User not found."
     
     else:
-        return render_template('login.html')
+        return render_template('login.html', session=session)
 
 @app.route('/logout')
 def logout():
@@ -96,7 +96,7 @@ def logout():
 
 @app.route('/<username>/profile', methods=['GET', 'POST'])
 def profile(username):
-    username = mongo.db.users.find_one({'name':username})
+    user = mongo.db.users.find_one({'name':username})
     if request.method == 'POST':
         return redirect(url_for('changepassword', username=username, password=request.form['newpassword']))
     return render_template('profile.html', username=username)
@@ -108,6 +108,41 @@ def changepassword(username, password):
     hashed = bcrypt.hashpw(password, salt)
     mongo.db.users.update_one({'name':username}, {'$set':{'password':hashed}})
     return redirect("/" + username)
+
+"""@app.route('/<stage_name>')
+def album_view():
+    songs = mongo.db.albums
+    albums = songs.find({"stage_name": stage_name})
+    return render_template('album.html', albums = albums, stage_names = stage_names)"""
+
+
+@app.route('/index/ <albumID>')
+def album_view(albumID):
+    collection = mongo.db.albums
+    album = collection.find_one({"_id":ObjectId(albumID)})
+    return render_template('album.html', album = album)
+
+
+@app.route('/index/<albumID>/add_image', methods=['GET','POST'])
+def add_cover(albumID): 
+    if request.method == "GET":
+        collection = mongo.db.albums 
+
+        album = collection.find_one({"_id":ObjectID(albumID)})
+
+        return render_template('add_cover.html', album=album)
+    else: 
+
+        #assigning form data to variable 
+        url = request.form['url']
+        collection = mongo.db.albums
+
+        album = {"_id":ObjectId(albumID)}
+        newcovers = {"$set": {"image": url}}
+
+        collection.update_one(album, newcovers)
+
+        return redirect('/index/<albumID>/'+albumID)
 
 @app.route('/index/artists_page', methods=['GET', 'POST'])
 def artists_page():

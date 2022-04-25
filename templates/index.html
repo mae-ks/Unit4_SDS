@@ -9,199 +9,12 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="indexstyle.css" media="screen">
         <link rel="icon" href="https://twemoji.maxcdn.com/2/svg/1f4fd.svg">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        
-        <style>
-            /* CSS for navbar */
-            nav, nav ul a {color: black;}
-            body {
-                background-size: cover;
-                background-image: url("../static/images/hexagons.jpg");
-                background-repeat: no-repeat;
-            }
-
-            .nav-wrapper {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                /* line-height: 1; */
-                overflow: hidden;
-            }
-
-            .nav-wrapper li {
-                display: inline-block;
-            }
-
-            h3 {
-                text-align: center;
-            }
-
-            .container {
-                color:black;
-                padding: 60px;
-                padding-bottom: 5px;
-            }
-
-            figure {
-                float: right;
-                width: 100%;
-                text-align: center;
-                font-style: italic;
-                font-size: normal;
-                text-indent: 0;
-                margin: 0px;
-            }
-
-            .circular--landscape { 
-                display: inline-block; 
-                position: relative; 
-                width: 200px; 
-                height: 200px; 
-                overflow: hidden; 
-                border-radius: 50%; 
-            }
-
-            .circular--landscape img { 
-                width: auto; 
-                height: 100%; 
-                margin-left: -50px; 
-            }
-
-            .circle {
-                height: 200px;
-                width: 200px;
-                background-color: #bbb;
-                border-radius: 50%;
-            }
-
-            P.desc {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .text-center {
-                background-color: rgb(230, 229, 229);
-                background-image: none;
-                box-shadow: 1px 12px 10px grey
-            }
-
-            .mb-5 {
-                padding: 20px;
-                padding-bottom: 1px;
-                margin: 1px;
-            }
-
-            figure2 {
-                float: right;
-                width: 100%;
-                text-align: center;
-                font-style: normal;
-                font-size: 18px;
-                text-indent: 0;
-                margin: 20px;
-            }
-
-            /* .figure2.figurefx {
-                width: 150px;
-                margin: 30px auto;
-                padding: 0;
-                display: block;
-                position: relative;
-                overflow: hidden;
-            }
-
-            .figure2.figurefx figcaption {
-                position: absolute;
-                display: block;
-                box-sizing: border-box;
-                text-align: center;
-                background: white;
-                padding: 15px;
-                z-index: 100;
-                width: 100%;
-                max-height: 100%;
-                overflow: hidden;
-                top: 50%;
-                left: 0;
-                transition: all 0.5s;
-            }
-
-            .figure2.pushup figcaption {
-                top: 100%;
-                opacity: 1;
-                transform: translate3d(0, 0, 0);
-            }
-
-            .figure2.pushup:hover figcaption{
-                transform: translate3d(0, -100%, 0);
-                transition: all 0.5s;
-                box-shadow: 0px -2px 28px rgba(0, 0, 0, 0.3);
-            } */
-
-            img {
-                object-fit: contain;
-                width:350px;
-                height:200px;
-            }
-
-            .square--portrait {
-                display:inline-block;
-                position: relative;
-                width: 200px; 
-                height: 200px;
-                overflow: hidden;
-            } 
-
-            .square--portrait img {
-                width: 100%;
-                height: auto;
-            }
-            
-            .square--portrait:hover {
-                transform: scale(1.232);
-            }
-
-            .square--landscape {
-                display:inline-block;
-                position: relative;
-                width: 200px;
-                height: 200px;
-                overflow: hidden;
-                margin-left: 0px
-            } 
-
-            .square--landscape img {
-                max-width: auto; 
-                height: 100%;
-            }
-
-            .square--landscape:hover {
-                transform: scale(1.232);
-            }
-
-            .square {
-                position: relative;
-                height: 200px;
-                width: 200px;
-                background-color: #bbb;
-                overflow: hidden; 
-                object-fit: cover;
-            }
-
-            .page-footer {
-                background-color: #ffffff;
-                color: #000000
-            }
-
-            .footer-copyright p{
-                color: black;
-                text-align: center;
-                width: 100%;
-            }
-        </style>
     </head>
-    <body>
+
+    <body>    
         <!-- Navbar -->
         <nav class="white">
             <div class="nav-wrapper">
@@ -233,7 +46,12 @@
 
             </div>
         </nav>
-        
+
+        {% if session %}
+        <a href={{ url_for('favorites')}}>
+            <img src = "https://cdn.dribbble.com/users/1369921/screenshots/3647290/media/9ffd1132dce685a50ab33af3d03ba091.gif" width=60 height= 60>
+         </a>  
+        {% endif %}
         <!-- Body content in here -->
         {% block body %}
             <div class = "container">
@@ -380,16 +198,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="footer-copyright" >
-                        <p>© 2021 Team Euphoria</p>
+                <div class="footer-copyright">
+                    <p>© 2021 Team Euphoria</p>
                 </div>
             </div>
         {% endblock %}
 
-        {% if session %}
-        <a href={{ url_for('favorites_page')}}>
-            <img src = "https://cdn.dribbble.com/users/1369921/screenshots/3647290/media/9ffd1132dce685a50ab33af3d03ba091.gif" width=60 height= 60>
-         </a>  
-         {% endif %}
+        
     </body>
 </html>
