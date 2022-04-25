@@ -207,4 +207,23 @@ def artists_page2(artist):
     This function will render_template to artist2.html.
     """
     return render_template("artist2.html", artist=artist)
-  
+
+@app.route('/index/<artist>/artists_page3', methods=['GET', 'POST'])
+def artists_page3(artist):
+    """
+    Parameters:
+    artist
+
+    This function will render_template to artist3.html.
+    """
+    return render_template("artist3.html", artist=artist)
+
+@app.route('/index/<artist>/artists_page4', methods=['GET', 'POST'])
+def artists_page4(artist):
+    """
+    Parameters:
+    artist
+
+    This function will render_template to artist4.html.
+    """
+    return render_template("artist4.html", artist=artist)

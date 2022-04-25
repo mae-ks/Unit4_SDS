@@ -38,25 +38,26 @@
             </div>
         </nav>
     <body>
-        <h1>
-            {% block header %}
-            Favorite Artists
-            {% endblock %}
-        </h1>
+        <div class="backg">
+            <h1>
+                
+                Favorite Artists
+                
+            </h1>
 
-        <div class="favs">
-            <ul>
+            <div class="favs">
+                <ul>
               
-                {% for fav in favorites %}
-                <li>{{fav.artist}} </li>
-                {% endfor %}
+                    {% for fav in favorites %}
+                    <li>{{fav.artist}} </li>
+                    {% endfor %}
              
-            </ul>
-        </div>
+                </ul>
+            </div>
 
-        <a href={{ url_for('index')}}>
-            <img src="http://cdn.onlinewebfonts.com/svg/img_238945.png" width='50' height='50' >
-        </a>
-          
+            <a href={{ url_for('index')}}>
+                <img src="http://cdn.onlinewebfonts.com/svg/img_238945.png" width='50' height='50' >
+            </a>
+        </div>
     </body>
 </html>

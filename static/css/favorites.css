@@ -11,3 +11,14 @@ h1 {
 .favs {
     font-family: "Monaco"
 }
+
+.backg{
+    min-height: 100vh;
+    width: 100%; 
+    background-color: rgb(255, 255, 255);
+    background-image: url(https://cdn.dribbble.com/users/1369921/screenshots/3647290/media/9ffd1132dce685a50ab33af3d03ba091.gif);
+    background-position: center; background-repeat: no-repeat;
+    background-size: cover;
+    color: rgb(31, 29, 29);
+    padding: 0 8%;
+  } 
