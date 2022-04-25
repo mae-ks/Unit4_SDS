@@ -102,6 +102,43 @@
                 margin: 20px;
             }
 
+            /* .figure2.figurefx {
+                width: 150px;
+                margin: 30px auto;
+                padding: 0;
+                display: block;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .figure2.figurefx figcaption {
+                position: absolute;
+                display: block;
+                box-sizing: border-box;
+                text-align: center;
+                background: white;
+                padding: 15px;
+                z-index: 100;
+                width: 100%;
+                max-height: 100%;
+                overflow: hidden;
+                top: 50%;
+                left: 0;
+                transition: all 0.5s;
+            }
+
+            .figure2.pushup figcaption {
+                top: 100%;
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+
+            .figure2.pushup:hover figcaption{
+                transform: translate3d(0, -100%, 0);
+                transition: all 0.5s;
+                box-shadow: 0px -2px 28px rgba(0, 0, 0, 0.3);
+            } */
+
             img {
                 object-fit: contain;
                 width:350px;
@@ -222,7 +259,7 @@
                 <h3 class="mb-5 font-weight-bold">Artists</h3>
                     <div class="row">
                         <div class="col s3">
-                            <figure2>
+                            <figure2 class="figurefx pushup">
                                 <figcaption>Billie Eilish</figcaption>
                                     <div class="square--portrait">
                                         <a href={{ url_for('artists_page')}}>
