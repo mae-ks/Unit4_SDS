@@ -14,20 +14,25 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         
         <style>
-            nav, nav ul a {color: black;}
+            nav, nav ul a {
+                color: black;
+            }
+
             body {
                 background-size: cover;
                 background-image: url("../static/images/hexagons.jpg");
             }
 
-            .white {
-                display: fixed;
+            .nav-wrapper {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                /* line-height: 1; */
+                overflow: hidden;
             }
-            .center {
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-                width: 50%;
+
+            .nav-wrapper li {
+                display: inline-block;
             }
 
             h3 {text-align: center;}
@@ -115,7 +120,6 @@
         
         <nav class="white">
             <div class="nav-wrapper">
-
                 <ul class="left hide-on-med-and-down">
                     {% if username %}
                     <li><a href={{ url_for('profile', username=username) }}>Profile</a></li>
