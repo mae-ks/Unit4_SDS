@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         
         <style>
+            /* CSS for navbar */
             nav, nav ul a {color: black;}
             body {
                 background-size: cover;
@@ -156,7 +157,7 @@
         </style>
     </head>
     <body>
-        
+        <!-- Navbar -->
         <nav class="white">
             <div class="nav-wrapper">
 
@@ -186,157 +187,156 @@
 
             </div>
         </nav>
-
-         <!-- Eurphoria Pres/Vip section -->
-        <div class = "container">
-            <div class="row">
-                <div class="col s6">
-                    <p class="desc">
-                       "Euphoria Records is a completely online-based record label, managing some of the largest upcoming acts, from Lil Baby, to Yeat, to Billie Eillish. Euphoria Records looks to innovate the music industry with cutting-edge technology enabling fans to buy their artists' music directly from the website." 
-                    </p>
-                </div>
-                <div class="col s3">
-                    <figure>
-                        <div class="circular--landscape">
-                            <img src="../static/images/jayz.jpg" alt="President" class="circle">
-                        </div>
-                        <figcaption>President</figcaption>
-                    </figure>
-                </div>
-                <div class="col s3">
-                    <figure>
-                        <div class="circular--landscape">
-                            <img src="../static/images/kanyewest.jpg" alt="Vice President" class="circle">
-                        </div>
-                        <figcaption>Vice President</figcaption>
-                    </figure>
+        
+        <!-- Body content in here -->
+        {% block body %}
+            <div class = "container">
+                <div class="row">
+                    <div class="col s6">
+                        <p class="desc">
+                        "Euphoria Records is a completely online-based record label, managing some of the largest upcoming acts, from Lil Baby, to Yeat, to Billie Eillish. Euphoria Records looks to innovate the music industry with cutting-edge technology enabling fans to buy their artists' music directly from the website." 
+                        </p>
+                    </div>
+                    <div class="col s3">
+                        <figure>
+                            <div class="circular--landscape">
+                                <img src="../static/images/jayz.jpg" alt="President" class="circle">
+                            </div>
+                            <figcaption>President</figcaption>
+                        </figure>
+                    </div>
+                    <div class="col s3">
+                        <figure>
+                            <div class="circular--landscape">
+                                <img src="../static/images/kanyewest.jpg" alt="Vice President" class="circle">
+                            </div>
+                            <figcaption>Vice President</figcaption>
+                        </figure>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Artist section -->
+            <!-- Artist section -->
 
-        <div id = "artists" class="text-center">
-            <h3 class="mb-5 font-weight-bold">Artists</h3>
-                <div class="row">
-                    <div class="col s3">
-                        <figure2>
-                            <figcaption>Billie Eilish</figcaption>
-                                <div class="square--portrait">
-                                    <a href="/artist.html/">
-                                        <img src="../static/images/billie-eilish.jpg" alt="Billie">
-                                    </a>
-                                </div>
-                        </figure2>
-                    </div>
+            <div id = "artists" class="text-center">
+                <h3 class="mb-5 font-weight-bold">Artists</h3>
+                    <div class="row">
+                        <div class="col s3">
+                            <figure2>
+                                <figcaption>Billie Eilish</figcaption>
+                                    <div class="square--portrait">
+                                        <a href="/artist.html/">
+                                            <img src="../static/images/billie-eilish.jpg" alt="Billie">
+                                        </a>
+                                    </div>
+                            </figure2>
+                        </div>
 
-                    <div class="col s3">
-                        <figure2>
-                            <figcaption>Lil Baby</figcaption>
-                                <div class="square--portrait">
+                        <div class="col s3">
+                            <figure2>
+                                <figcaption>Lil Baby</figcaption>
+                                    <div class="square--portrait">
+                                        <a href="https://www.qries.com/">
+                                            <img src="../static/images/lilbaby.jpg" alt="Lil Baby">
+                                        </a>
+                                    </div>
+                            </figure2>
+                        </div>
+
+                        <div class="col s3">
+                            <figure2>
+                                <figcaption>Yeat</figcaption>
                                     <a href="https://www.qries.com/">
-                                        <img src="../static/images/lilbaby.jpg" alt="Lil Baby">
+                                        <img src="../static/images/yeat.jpg" alt="Yeat">
                                     </a>
-                                </div>
-                        </figure2>
+                            </figure2>
+                        </div>
+
+                        <div class="col s3">
+                            <figure2>
+                                <figcaption>Tame Impala</figcaption>
+                                    <div class="square--landscape">
+                                        <a href="https://www.qries.com/">
+                                            <img src="../static/images/tame.jpg" alt="Tame Impala" class="square">
+                                        </a>
+                                    </div>
+                            </figure2>
+                        </div>
                     </div>
 
-                    <div class="col s3">
-                        <figure2>
-                            <figcaption>Yeat</figcaption>
-                                <a href="https://www.qries.com/">
-                                    <img src="../static/images/yeat.jpg" alt="Yeat">
-                                </a>
-                        </figure2>
-                    </div>
-
-                    <div class="col s3">
-                        <figure2>
-                            <figcaption>Tame Impala</figcaption>
-                                <div class="square--landscape">
+                    <div class="row">
+                        <div class="col s3">
+                            <figure2>
+                                <figcaption>NoCap</figcaption>
                                     <a href="https://www.qries.com/">
-                                        <img src="../static/images/tame.jpg" alt="Tame Impala" class="square">
+                                        <img src="../static/images/nocap.jpg" alt="NoCap" class="square">
                                     </a>
-                                </div>
-                        </figure2>
-                    </div>
-                </div>
+                            </figure2>
+                        </div>
 
-                <div class="row">
-                    <div class="col s3">
-                        <figure2>
-                            <figcaption>NoCap</figcaption>
-                                <a href="https://www.qries.com/">
-                                    <img src="../static/images/nocap.jpg" alt="NoCap" class="square">
-                                </a>
-                        </figure2>
-                    </div>
+                        <div class="col s3">
+                            <figure2>
+                                <figcaption>Cleo Sol</figcaption>
+                                    <div class="square--landscape">
+                                        <a href="https://www.qries.com/">
+                                            <img src="../static/images/cleo.jpg" alt="Cleo Sol" class="square">
+                                        </a>
+                                    </div>
+                            </figure2>
+                        </div>
 
-                    <div class="col s3">
-                        <figure2>
-                            <figcaption>Cleo Sol</figcaption>
-                                <div class="square--landscape">
-                                    <a href="https://www.qries.com/">
-                                        <img src="../static/images/cleo.jpg" alt="Cleo Sol" class="square">
-                                    </a>
-                                </div>
-                        </figure2>
-                    </div>
-
-                    <div class="col s3">
-                        <figure2>
-                            <figcaption>Tony Shhnow</figcaption>
-                        
-                                <div class="square--portrait">
-                                    <a href="https://www.qries.com/">
-                                        <img src="../static/images/tony.jpg" alt="Tony Shhnow">
-                                    </a>
-                                </div>
+                        <div class="col s3">
+                            <figure2>
+                                <figcaption>Tony Shhnow</figcaption>
                             
-                        </figure2>
-                    </div>
+                                    <div class="square--portrait">
+                                        <a href="https://www.qries.com/">
+                                            <img src="../static/images/tony.jpg" alt="Tony Shhnow">
+                                        </a>
+                                    </div>
+                                
+                            </figure2>
+                        </div>
 
-                    <div class="col s3">
-                        <figure2>
-                            <figcaption>Babyface Ray</figcaption>
-                                <div class="square--portrait">
-                                    <a href="https://www.qries.com/">
-                                        <img src="../static/images/ray.jpg" alt="Babyface Ray">
-                                    </a>
-                                </div>
-                        </figure2>
+                        <div class="col s3">
+                            <figure2>
+                                <figcaption>Babyface Ray</figcaption>
+                                    <div class="square--portrait">
+                                        <a href="https://www.qries.com/">
+                                            <img src="../static/images/ray.jpg" alt="Babyface Ray">
+                                        </a>
+                                    </div>
+                            </figure2>
+                        </div>
+                    </div>
+            </div>
+
+            <div class="page-footer">
+                <div class="">
+                    <div class="row">
+                        <div class="col l6 s12">
+                            <h5 class="">Euphoria Records!</h5>
+                            <p class="">123 Euphoria Ave</p>
+                            <p class="">Washington, DC 20060</p>
+                        </div>
+                        <div class="col l4 offset-l2 s12">
+                            <h5 class "black-text">Links</h5>
+                            <ul>
+                                <li>
+                                    <a class="" href="https://www.instagram.com/euphoriarecords">Instagram</a>
+                                </li>
+                                <li>
+                                    <a class="" href="https://www.twitter.com/euphoriarecords">Twitter</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-        </div>
-
-        <div class="page-footer">
-            <div class="">
-                <div class="row">
-                    <div class="col l6 s12">
-                        <h5 class="">Euphoria Records!</h5>
-                        <p class="">123 Euphoria Ave</p>
-                        <p class="">Washington, DC 20060</p>
-                    </div>
-                    <div class="col l4 offset-l2 s12">
-                        <h5 class "black-text">Links</h5>
-                        <ul>
-                            <li>
-                                <a class="" href="https://www.instagram.com/euphoriarecords">Instagram</a>
-                            </li>
-                            <li>
-                                <a class="" href="https://www.twitter.com/euphoriarecords">Twitter</a>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="footer-copyright" >
+                        <p>© 2021 Team Euphoria</p>
                 </div>
             </div>
-            <div class="footer-copyright" >
-                    <p>© 2021 Team Euphoria</p>
-            </div>
-        </div>
-
-        <!-- {% block body %}
-        {% endblock %} -->
+        {% endblock %}
 
     </body>
 </html>
