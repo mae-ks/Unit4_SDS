@@ -19,6 +19,7 @@ app.config['MONGO_DBNAME'] = 'Unit4'
 app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 mongo = PyMongo(app)
 
+
 # -- Session data --
 app.secret_key = secrets.token_urlsafe(16)
 
@@ -114,3 +115,34 @@ def artists_page():
     # if request.method == 'GET':
     #     return redirect(url_for())
     return render_template("artist.html")
+#Add to Favorites Route
+@app.route('/favorites', methods=['GET', 'POST'])
+def favorite():
+    if request.method == 'POST':
+        if request.form.get('FAVORITE') == 'FAVORITE':
+            collection = mongo.db.favorites
+            if session:
+                username = session['username']
+            else:
+                username = None
+            album = "Test"
+            collection.insert_one({'username': username, 'album': album})
+
+    elif request.method == 'GET':
+        return render_template('favorites.html')
+
+    return render_template('favorites.html')
+
+#Navigate to Favorites Page
+@app.route('/index/favorites_page', methods=['GET', 'POST'])
+def favorites_page():
+    return render_template("favorites.html")
+
+#View Favorites
+@app.route('/favorites_page')
+def favorites_view():
+    username = session['username']
+    fav = mongo.db.favorites
+    favorites = fav.find({"username":username})
+    return render_template('favorites.html', favorites=favorites)
+  
